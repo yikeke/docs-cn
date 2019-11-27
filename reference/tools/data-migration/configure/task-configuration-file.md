@@ -7,13 +7,13 @@ category: reference
 
 本文档主要介绍 Data Migration (DM) 的任务基础配置文件 [`task_basic.yaml`](https://github.com/pingcap/dm/blob/master/dm/master/task_basic.yaml)，包含[全局配置](#全局配置)和[实例配置](#实例配置)两部分。
 
-完整的任务配置参见 [DM 任务完整配置文件介绍](/v2.1/reference/tools/data-migration/configure/task-configuration-file-full.md)
+完整的任务配置参见 [DM 任务完整配置文件介绍](/reference/tools/data-migration/configure/task-configuration-file-full.md)
 
-关于各配置项的功能和配置，请参阅[数据同步功能](/v2.1/reference/tools/data-migration/features/overview.md)。
+关于各配置项的功能和配置，请参阅[数据同步功能](/reference/tools/data-migration/features/overview.md)。
 
 ## 关键概念
 
-关于包括 `source-id` 和 DM-worker ID 在内的关键概念的介绍，请参阅[关键概念](/v2.1/reference/tools/data-migration/configure/overview.md#关键概念)。
+关于包括 `source-id` 和 DM-worker ID 在内的关键概念的介绍，请参阅[关键概念](/reference/tools/data-migration/configure/overview.md#关键概念)。
 
 ## 基础配置文件示例
 
@@ -74,7 +74,7 @@ mysql-instances:
 
 ### 功能配置集
 
-对于一般的业务场景，只需要配置黑白名单过滤规则集，配置说明参见以上示例配置文件中 `black-white-list` 的注释以及 [Black & white table lists](/v2.1/reference/tools/data-migration/features/overview.md#black--white-table-lists)
+对于一般的业务场景，只需要配置黑白名单过滤规则集，配置说明参见以上示例配置文件中 `black-white-list` 的注释以及 [Black & white table lists](/reference/tools/data-migration/features/overview.md#black--white-table-lists)
 
 ## 实例配置
 

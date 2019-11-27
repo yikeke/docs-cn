@@ -8,14 +8,14 @@ category: reference
 
 本文将详细介绍 PD 调度系统的原理，并通过几个典型场景的分析和处理方式，分享调度策略的最佳实践和调优方式，帮助大家在使用过程中快速定位问题。本文假定你对 TiDB，TiKV 以及 PD 已经有一定的了解，相关核心概念如下：
 
-- [Leader/Follower/Learner](/v2.1/glossary.md#leaderfollowerlearner)
-- [Operator](/v2.1/glossary.md#operator)
-- [Operator Step](/v2.1/glossary.md#operator-step)
-- [Pending/Down](/v2.1/glossary.md#pendingdown)
-- [Region/Peer/Raft Group](/v2.1/glossary.md#regionpeerraft-group)
-- [Region Split](/v2.1/glossary.md#region-split)
-- [Scheduler](/v2.1/glossary.md#scheduler)
-- [Store](/v2.1/glossary.md#store)
+- [Leader/Follower/Learner](/glossary.md#leaderfollowerlearner)
+- [Operator](/glossary.md#operator)
+- [Operator Step](/glossary.md#operator-step)
+- [Pending/Down](/glossary.md#pendingdown)
+- [Region/Peer/Raft Group](/glossary.md#regionpeerraft-group)
+- [Region Split](/glossary.md#region-split)
+- [Scheduler](/glossary.md#scheduler)
+- [Store](/glossary.md#store)
 
 > **注意：**
 >
@@ -84,7 +84,7 @@ Region merge 指的是为了避免删除数据后大量小甚至空的 Region �
 
 ## 查询调度状态
 
-查看调度系统状态的手段主要包括 Metrics，pd-ctl 和日志，这里介绍 Metrics 和 pd-ctl 两种方式。更具体的信息可以参考官方文档中 [PD 监控](/v2.1/reference/key-monitoring-metrics/pd-dashboard.md)以及 [PD Control 使用](/v2.1/reference/key-monitoring-metrics/pd-dashboard.md)的章节。
+查看调度系统状态的手段主要包括 Metrics，pd-ctl 和日志，这里介绍 Metrics 和 pd-ctl 两种方式。更具体的信息可以参考官方文档中 [PD 监控](/reference/key-monitoring-metrics/pd-dashboard.md)以及 [PD Control 使用](/reference/key-monitoring-metrics/pd-dashboard.md)的章节。
 
 ### Operator 状态
 
@@ -137,7 +137,7 @@ Region merge 指的是为了避免删除数据后大量小甚至空的 Region �
 
 ## 调度策略控制
 
-在线调整调度策略主要使用 pd-ctl 工具来完成，可以通过以下三个方面来控制 PD 的调度行为。更具体的信息可以参考 [PD Control](/v2.1/reference/tools/pd-control.md)。
+在线调整调度策略主要使用 pd-ctl 工具来完成，可以通过以下三个方面来控制 PD 的调度行为。更具体的信息可以参考 [PD Control](/reference/tools/pd-control.md)。
 
 ### 启停调度器
 

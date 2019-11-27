@@ -5,7 +5,7 @@ category: reference
 
 # 管理数据同步任务
 
-本文介绍了如何使用 [dmctl](/v2.1/reference/tools/data-migration/overview.md#dmctl) 组件来进行数据同步任务的管理和维护。对于用 DM-Ansible 部署的 DM 集群，dmctl 二进制文件路径为 `dm-ansible/dmctl`。
+本文介绍了如何使用 [dmctl](/reference/tools/data-migration/overview.md#dmctl) 组件来进行数据同步任务的管理和维护。对于用 DM-Ansible 部署的 DM 集群，dmctl 二进制文件路径为 `dm-ansible/dmctl`。
 
 ## dmctl 基本用法
 
@@ -110,7 +110,7 @@ Flags:
 
 ### 创建数据同步任务
 
-`start-task` 命令用于创建数据同步任务。 当数据同步任务启动时，DM 将[自动对相应权限和配置进行前置检查](/v2.1/reference/tools/data-migration/precheck.md)。
+`start-task` 命令用于创建数据同步任务。 当数据同步任务启动时，DM 将[自动对相应权限和配置进行前置检查](/reference/tools/data-migration/precheck.md)。
 
 {{< copyable "" >}}
 
@@ -178,7 +178,7 @@ start-task task.yaml
 
 ### 查询数据同步任务状态
 
-`query-status` 命令用于查询数据同步任务状态。有关查询结果及子任务状态，详见[查询状态](/v2.1/reference/tools/data-migration/query-status.md)。
+`query-status` 命令用于查询数据同步任务状态。有关查询结果及子任务状态，详见[查询状态](/reference/tools/data-migration/query-status.md)。
 
 {{< copyable "" >}}
 
@@ -219,13 +219,13 @@ query-status
 
 #### 返回结果示例
 
-有关查询结果中各参数的意义，详见[查询状态结果](/v2.1/reference/tools/data-migration/query-status.md#查询结果)。
+有关查询结果中各参数的意义，详见[查询状态结果](/reference/tools/data-migration/query-status.md#查询结果)。
 
 ### 查询运行错误
 
 `query-error` 可用于查询数据同步任务与 relay 处理单元的错误信息。相比于 `query-status`，`query-error` 一般不用于获取除错误信息之外的其他信息。
 
-`query-error` 常用于获取 `sql-skip`/`sql-replace` 所需的 binlog position 信息，有关 `query-error` 的参数与结果解释，请参考 [跳过 (skip) 或替代执行 (replace) 异常的 SQL 语句 文档中的 query-error](/v2.1/reference/tools/data-migration/skip-replace-sqls.md#query-error)。
+`query-error` 常用于获取 `sql-skip`/`sql-replace` 所需的 binlog position 信息，有关 `query-error` 的参数与结果解释，请参考 [跳过 (skip) 或替代执行 (replace) 异常的 SQL 语句 文档中的 query-error](/reference/tools/data-migration/skip-replace-sqls.md#query-error)。
 
 ### 暂停数据同步任务
 
@@ -570,7 +570,7 @@ update-task task_all_black.yaml
 
 ## 管理 DDL lock
 
-目前与 DDL lock 相关的命令主要包括 `show-ddl-locks`、`unlock-ddl-lock`、`break-ddl-lock` 等。有关它们的功能、用法以及适用场景等，请参考[手动处理 sharding DDL lock](/v2.1/reference/tools/data-migration/features/manually-handling-sharding-ddl-locks.md)。
+目前与 DDL lock 相关的命令主要包括 `show-ddl-locks`、`unlock-ddl-lock`、`break-ddl-lock` 等。有关它们的功能、用法以及适用场景等，请参考[手动处理 sharding DDL lock](/reference/tools/data-migration/features/manually-handling-sharding-ddl-locks.md)。
 
 ## 其他任务与集群管理命令
 
@@ -578,7 +578,7 @@ update-task task_all_black.yaml
 
 ### 检查任务配置文件
 
-`check-task` 命令用于检查指定的数据同步任务配置文件（`task.yaml`）是否合法以及上下游数据库的配置、权限、表结构等是否满足同步需要。具体可参考[上游 MySQL 实例配置前置检查](/v2.1/reference/tools/data-migration/precheck.md)。
+`check-task` 命令用于检查指定的数据同步任务配置文件（`task.yaml`）是否合法以及上下游数据库的配置、权限、表结构等是否满足同步需要。具体可参考[上游 MySQL 实例配置前置检查](/reference/tools/data-migration/precheck.md)。
 
 在使用 `start-task` 启动同步任务时，DM 也会执行 `check-task` 所做的全部检查。
 
@@ -634,7 +634,7 @@ check-task task-test.yaml
 
 relay 处理单元在 DM-worker 进程启动后即开始自动运行。通过使用 `pause-relay` 命令，我们可以暂停 relay 处理单元的运行。
 
-当需要切换 DM-worker 通过虚拟 IP 连接的上游 MySQL 时，我们需要使用 `pause-relay` 对 DM 执行变更。具体变更步骤请参考[虚拟 IP 环境下的上游主从切换](/v2.1/reference/tools/data-migration/usage-scenarios/master-slave-switch.md#虚拟-IP-环境下的上游主从切换)。
+当需要切换 DM-worker 通过虚拟 IP 连接的上游 MySQL 时，我们需要使用 `pause-relay` 对 DM 执行变更。具体变更步骤请参考[虚拟 IP 环境下的上游主从切换](/reference/tools/data-migration/usage-scenarios/master-slave-switch.md#虚拟-IP-环境下的上游主从切换)。
 
 {{< copyable "" >}}
 
@@ -697,7 +697,7 @@ pause-relay -w "172.16.30.15:8262"
 
 `resume-relay` 用于恢复处于 `Paused` 状态的 relay 处理单元。
 
-当需要切换 DM-worker 通过虚拟 IP 连接的上游 MySQL 时，我们需要使用 `resume-relay` 对 DM 执行变更。具体变更步骤请参考[虚拟 IP 环境下的上游主从切换](/v2.1/reference/tools/data-migration/usage-scenarios/master-slave-switch.md#虚拟-IP-环境下的上游主从切换)。
+当需要切换 DM-worker 通过虚拟 IP 连接的上游 MySQL 时，我们需要使用 `resume-relay` 对 DM 执行变更。具体变更步骤请参考[虚拟 IP 环境下的上游主从切换](/reference/tools/data-migration/usage-scenarios/master-slave-switch.md#虚拟-IP-环境下的上游主从切换)。
 
 {{< copyable "" >}}
 
@@ -760,7 +760,7 @@ resume-relay -w "172.16.30.15:8262"
 
 relay 处理单元通过使用不同的子目录来存储来自上游不同 MySQL 实例的 binlog 数据。通过使用 `switch-relay-master` 命令，我们可以变更 relay 处理单元以开始使用一个新的子目录。
 
-当需要切换 DM-worker 通过虚拟 IP 连接的上游 MySQL 时，我们需要使用 `switch-relay-master` 对 DM 执行变更。具体变更步骤请参考[虚拟 IP 环境下的上游主从切换](/v2.1/reference/tools/data-migration/usage-scenarios/master-slave-switch.md#虚拟-IP-环境下的上游主从切换)。
+当需要切换 DM-worker 通过虚拟 IP 连接的上游 MySQL 时，我们需要使用 `switch-relay-master` 对 DM 执行变更。具体变更步骤请参考[虚拟 IP 环境下的上游主从切换](/reference/tools/data-migration/usage-scenarios/master-slave-switch.md#虚拟-IP-环境下的上游主从切换)。
 
 {{< copyable "" >}}
 
@@ -819,7 +819,7 @@ switch-relay-master -w "172.16.30.15:8262"
 
 ### 手动清理 relay log
 
-DM 支持[自动清理 relay log](/v2.1/reference/tools/data-migration/relay-log.md#自动数据清理)，但同时 DM 也支持使用 `purge-relay` 命令[手动清理 relay log](/v2.1/reference/tools/data-migration/relay-log.md#手动数据清理)。
+DM 支持[自动清理 relay log](/reference/tools/data-migration/relay-log.md#自动数据清理)，但同时 DM 也支持使用 `purge-relay` 命令[手动清理 relay log](/reference/tools/data-migration/relay-log.md#手动数据清理)。
 
 {{< copyable "" >}}
 
@@ -887,11 +887,11 @@ purge-relay -w "127.0.0.1:8262" --filename "mysql-bin.000003"
 
 ### 预设跳过 DDL 操作
 
-`sql-skip` 命令用于预设一个跳过操作。当 binlog event 的 position 或 SQL 语句与指定的 `binlog-pos` 或 `sql-pattern` 匹配时，执行该跳过操作。相关参数与结果解释，请参考[`sql-skip`](/v2.1/reference/tools/data-migration/skip-replace-sqls.md#sql-skip)。
+`sql-skip` 命令用于预设一个跳过操作。当 binlog event 的 position 或 SQL 语句与指定的 `binlog-pos` 或 `sql-pattern` 匹配时，执行该跳过操作。相关参数与结果解释，请参考[`sql-skip`](/reference/tools/data-migration/skip-replace-sqls.md#sql-skip)。
 
 ### 预设替换 DDL 操作
 
-`sql-replace` 命令用于预设一个替换执行操作。当 binlog event 的 position 或 SQL 语句与指定的 `binlog-pos` 或 `sql-pattern` 匹配时，执行该替换执行操作。相关参数与结果解释，请参考[`sql-replace`](/v2.1/reference/tools/data-migration/skip-replace-sqls.md#sql-replace)。
+`sql-replace` 命令用于预设一个替换执行操作。当 binlog event 的 position 或 SQL 语句与指定的 `binlog-pos` 或 `sql-pattern` 匹配时，执行该替换执行操作。相关参数与结果解释，请参考[`sql-replace`](/reference/tools/data-migration/skip-replace-sqls.md#sql-replace)。
 
 ### 强制刷新 `task => DM-workers` 映射关系
 

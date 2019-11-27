@@ -49,8 +49,8 @@ mysql> SHOW GRANTS FOR u1;
 
 ## MySQL 兼容性
 
-`SHOW GRANTS` 语句与 MySQL 完全兼容。如有任何兼容性差异，请在 GitHub 上提交 [issue](/v2.1/report-issue.md)。
+`SHOW GRANTS` 语句与 MySQL 完全兼容。如有任何兼容性差异，请在 GitHub 上提交 [issue](/report-issue.md)。
 
 ## 另请参阅
 
-* [GRANT](/v2.1/reference/sql/statements/grant-privileges.md)
+* [GRANT](/reference/sql/statements/grant-privileges.md)

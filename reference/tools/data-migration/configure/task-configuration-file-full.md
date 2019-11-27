@@ -7,11 +7,11 @@ category: reference
 
 本文档主要介绍 Data Migration (DM) 的任务完整的配置文件 [`task_advanced.yaml`](https://github.com/pingcap/dm/blob/master/dm/master/task_advanced.yaml)，包含[全局配置](#全局配置) 和[实例配置](#实例配置) 两部分。
 
-关于各配置项的功能和配置，请参阅[数据同步功能](/v2.1/reference/tools/data-migration/features/overview.md#同步功能介绍)。
+关于各配置项的功能和配置，请参阅[数据同步功能](/reference/tools/data-migration/features/overview.md#同步功能介绍)。
 
 ## 关键概念
 
-关于包括 `source-id` 和 DM-worker ID 在内的关键概念的介绍，请参阅[关键概念](/v2.1/reference/tools/data-migration/configure/overview.md#关键概念)。
+关于包括 `source-id` 和 DM-worker ID 在内的关键概念的介绍，请参阅[关键概念](/reference/tools/data-migration/configure/overview.md#关键概念)。
 
 ## 完整配置文件示例
 
@@ -140,9 +140,9 @@ mysql-instances:
 
 | 配置项        | 说明                                    |
 | :------------ | :--------------------------------------- |
-| `routes` | 上游和下游表之间的路由 table routing 规则集。如果上游与下游的库名、表名一致，则不需要配置该项。使用场景及示例配置参见 [Table Routing](/v2.1/reference/tools/data-migration/features/overview.md#table-routing) |
-| `filters` | 上游数据库实例匹配的表的 binlog event filter 规则集。如果不需要对 binlog 进行过滤，则不需要配置该项。使用场景及示例配置参见 [Binlog Event Filter](/v2.1/reference/tools/data-migration/features/overview.md#binlog-event-filter) |
-| `black-white-list` | 该上游数据库实例匹配的表的 black & white list 过滤规则集。建议通过该项指定需要同步的库和表，否则会同步所有的库和表。使用场景及示例配置参见 [Black & White Lists](/v2.1/reference/tools/data-migration/features/overview.md#black--white-table-lists) |
+| `routes` | 上游和下游表之间的路由 table routing 规则集。如果上游与下游的库名、表名一致，则不需要配置该项。使用场景及示例配置参见 [Table Routing](/reference/tools/data-migration/features/overview.md#table-routing) |
+| `filters` | 上游数据库实例匹配的表的 binlog event filter 规则集。如果不需要对 binlog 进行过滤，则不需要配置该项。使用场景及示例配置参见 [Binlog Event Filter](/reference/tools/data-migration/features/overview.md#binlog-event-filter) |
+| `black-white-list` | 该上游数据库实例匹配的表的 black & white list 过滤规则集。建议通过该项指定需要同步的库和表，否则会同步所有的库和表。使用场景及示例配置参见 [Black & White Lists](/reference/tools/data-migration/features/overview.md#black--white-table-lists) |
 | `mydumpers` | mydumper 处理单元运行配置参数。如果默认配置可以满足需求，则不需要配置该项，也可以只使用 `mydumper-thread` 对 `thread` 配置项单独进行配置。 |
 | `loaders` | loader 处理单元运行配置参数。如果默认配置可以满足需求，则不需要配置该项，也可以只使用 `loader-thread` 对 `pool-size` 配置项单独进行配置。 |
 | `syncers` | syncer 处理单元运行配置参数。如果默认配置可以满足需求，则不需要配置该项，也可以只使用 `syncer-thread` 对 `worker-count` 配置项单独进行配置。 |

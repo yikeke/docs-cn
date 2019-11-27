@@ -7,7 +7,7 @@ category: reference
 
 本文档主要介绍 DM-worker 的基础配置文件。在一般场景中，用户只需要使用基础配置即可完成 DM-worker 的部署。
 
-完整配置项参考 [DM-worker 完整配置说明](/v2.1/reference/tools/data-migration/configure/dm-worker-configuration-file-full.md)。
+完整配置项参考 [DM-worker 完整配置说明](/reference/tools/data-migration/configure/dm-worker-configuration-file-full.md)。
 
 ## 配置文件示例
 
@@ -64,4 +64,4 @@ port = 3306
 
 > **注意：**
 >
-> 以上配置为部署 DM-worker 的基础配置，一般情况下使用基础配置即可，更多配置项参考 [DM-worker 完整配置说明](/v2.1/reference/tools/data-migration/configure/dm-worker-configuration-file-full.md)。
+> 以上配置为部署 DM-worker 的基础配置，一般情况下使用基础配置即可，更多配置项参考 [DM-worker 完整配置说明](/reference/tools/data-migration/configure/dm-worker-configuration-file-full.md)。

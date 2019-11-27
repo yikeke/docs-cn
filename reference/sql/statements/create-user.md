@@ -50,7 +50,7 @@ Query OK, 1 row affected (0.02 sec)
 
 ## 另请参阅
 
-* [Security Compatibility with MySQL](/v2.1/reference/security/compatibility.md)
-* [DROP USER](/v2.1/reference/sql/statements/drop-user.md)
-* [ALTER USER](/v2.1/reference/sql/statements/alter-user.md)
-* [Privilege Management](/v2.1/reference/security/privilege-system.md)
+* [Security Compatibility with MySQL](/reference/security/compatibility.md)
+* [DROP USER](/reference/sql/statements/drop-user.md)
+* [ALTER USER](/reference/sql/statements/alter-user.md)
+* [Privilege Management](/reference/security/privilege-system.md)
