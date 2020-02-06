@@ -14,10 +14,10 @@ auto_random 用于解决大批量写入含有『整型自增主键列』表时�
 例如下表
 
 ```sql
-create table t (a int primary key auto_increment, b varchar(255))
+create table t (a int primary key AUTO_INCREMENT, b varchar(255))
 ```
 
-在执行大量的没有指定主键值（a 列）的 insert 语句时，由于连续自增的行值作为 row_id，可能导致单个 TiKV 节点上产生写入热点，进而影响对外提供服务的性能。如果不希望有这种性能下降，可以在执行建表语句时为 a 列指定 auto_random 而不是 auto_increment，即
+在执行大量的没有指定主键值（a 列）的 insert 语句时，由于连续自增的行值作为 row_id，可能导致单个 TiKV 节点上产生写入热点，进而影响对外提供服务的性能。如果不希望有这种性能下降，可以在执行建表语句时为 a 列指定 auto_random 而不是 AUTO_INCREMENT，即
 
 {{< copyable "sql" >}}
 
@@ -33,7 +33,7 @@ create table t (a int primary key auto_random, b varchar(255))
 create table t (a int auto_random, b varchar(255), primary key (a))
 ```
 
-此时，如果 insert 语句没有指定整形主键列（a 列）的值，TiDB 会自动分配一个，该值不保证自增，不保证连续，只保证唯一，避免了连续 row_id 带来的热点问题；而如果 insert 语句显式指定了整形主键列的值，和 auto_increment 类似，TiDB 会原封不动地保存该值。
+此时，如果 insert 语句没有指定整形主键列（a 列）的值，TiDB 会自动分配一个，该值不保证自增，不保证连续，只保证唯一，避免了连续 row_id 带来的热点问题；而如果 insert 语句显式指定了整形主键列的值，和 AUTO_INCREMENT 类似，TiDB 会原封不动地保存该值。
 
 自动分配值的计算方式是，二进制形式下的最高 5 位（称为 shard bits）由当前事务的开始时间决定，剩下的位数按照自增的顺序分配。如果希望使用一个不同的 shard bits 的数量，可以使用以下建表语句：
 
@@ -78,7 +78,7 @@ create table t (a int primary key auto_random)
 - 必须指定在整数类型的主键列上（例外情况见『关于 alter-primary-key 配置项的说明』一节），否则报错。
 - 不支持使用 alter table (change/modify) 来修改 auto_random 属性，包括添加/移除该属性。
 - 不支持修改含有 auto_random 属性的主键列的列类型。
-- 不支持与 auto_increment 同时指定在同一列上。
+- 不支持与 AUTO_INCREMENT 同时指定在同一列上。
 - 不支持与 default 指定在同一列上。
 - 插入数据时，不建议自行显式指定含有 auto_random 列的值。原因是 rebase 仅针对除 shard_bits 以外的位进行。如果没有考虑到这一点，可能会导致提前耗尽用于自动分配的数值。
 
