@@ -56,10 +56,10 @@ aliases: ['/docs-cn/dev/quick-start-with-tidb/','/docs-cn/dev/how-to/get-started
         {{< copyable "shell-regular" >}}
 
         ```shell
-        tiup playground v4.0.0 --db 2 --pd 3 --kv 3 --monitor
+        tiup playground v5.0.0 --db 2 --pd 3 --kv 3 --monitor
         ```
 
-        上述命令会在本地下载并启动一个 `v4.0.0` 版本的集群，`--monitor` 表示同时部署监控组件。最新版本可以通过执行 `tiup list tidb` 来查看。运行结果将显示集群的访问方式：
+        上述命令会在本地下载并启动某个版本的集群（例如 v5.0.0），`--monitor` 表示同时部署监控组件。最新版本可以通过执行 `tiup list tidb` 来查看。运行结果将显示集群的访问方式：
 
         ```log
         CLUSTER START SUCCESSFULLY, Enjoy it ^-^
@@ -68,18 +68,23 @@ aliases: ['/docs-cn/dev/quick-start-with-tidb/','/docs-cn/dev/how-to/get-started
         To view the dashboard: http://127.0.0.1:2379/dashboard
         To view the monitor: http://127.0.0.1:9090
         ```
-
+        
+        > **注意：**
+        >
+        > 以这种方式执行的 playground，在运行结束后 TiUP 会清理掉原集群数据，重新执行该命令后会得到一个全新的集群。
+        > 若希望持久化数据，可以执行 TiUP 的 `--tag` 参数：`tiup --tag <your-tag> playground ...`，详情参考 [TiUP 参考手册](/tiup/tiup-reference.md#-t---tag-string)。
+    
 4. 新开启一个 session 以访问 TiDB 数据库。
 
-    1. 首先安装 MySQL 客户端。如果已安装 MySQL 客户端则可跳过这一步骤。
+    + 使用 TiUP `client` 连接 TiDB：
 
         {{< copyable "shell-regular" >}}
 
         ```shell
-        yum -y install mysql
+        tiup client
         ```
 
-    2. 使用 MySQL 客户端连接 TiDB：
+    + 也可使用 MySQL 客户端连接 TiDB：
 
         {{< copyable "shell-regular" >}}
 
