@@ -35,7 +35,9 @@ Dumpling 的更多具体用法可以使用 --help 选项查看，或者查看 [D
 
 使用 Dumpling 时，需要在已经启动的集群上执行导出命令。本文假设在 `127.0.0.1:4000` 有一个 TiDB 实例，并且这个 TiDB 实例中有无密码的 root 用户。
 
-Dumpling 包含在 tidb-toolkit 安装包中，可[在此下载](/download-ecosystem-tools.md#dumpling)。
+要获取 Dumpling，你可以使用 TiUP 执行 `tiup install dumpling` 命令。获取后，使用 `tiup dumpling ...` 命令运行 Dumpling。
+
+Dumpling 也包含在 tidb-toolkit 安装包中，可[在此下载](/download-ecosystem-tools.md#dumpling)。
 
 ## 从 TiDB/MySQL 导出数据
 
@@ -69,7 +71,7 @@ dumpling \
 - `-h`、`-P`、`-u` 分别代表地址、端口、用户。如果需要密码验证，可以使用 `-p $YOUR_SECRET_PASSWORD` 将密码传给 Dumpling。
 - `-o` 用于选择存储导出文件的目录，支持本地文件路径或[外部存储 URL](/br/backup-and-restore-storages.md) 格式。
 - `-r` 用于指定单个文件的最大行数，指定该参数后 Dumpling 会开启表内并发加速导出，同时减少内存使用。
-- `-F` 可以指定单个文件的最大大小。
+- `-F` 选项用于指定单个文件的最大大小（单位为 `MiB`，可接受类似 `5GiB` 或 `8KB` 的输入）。如果你想使用 TiDB Lightning 将该文件加载到 TiDB 实例中，建议将 `-F` 选项的值保持在 256 MiB 或以下。
 
 > **注意：**
 >
@@ -334,7 +336,7 @@ SET GLOBAL tidb_gc_life_time = '10m';
 | -V 或 --version | 输出 Dumpling 版本并直接退出 |
 | -B 或 --database | 导出指定数据库 |
 | -T 或 --tables-list | 导出指定数据表 |
-| -f 或 --filter | 导出能匹配模式的表，语法可参考 [table-filter](/table-filter.md) | `*.*`（导出所有库表） |
+| -f 或 --filter | 导出能匹配模式的表，语法可参考 [table-filter](/table-filter.md) | `[\*.\*,!/^(mysql&#124;sys&#124;INFORMATION_SCHEMA&#124;PERFORMANCE_SCHEMA&#124;METRICS_SCHEMA&#124;INSPECTION_SCHEMA)$/.\*]`（导出除系统库外的所有库表） |
 | --case-sensitive | table-filter 是否大小写敏感 | false，大小写不敏感 |
 | -h 或 --host| 连接的数据库主机的地址 | "127.0.0.1" |
 | -t 或 --threads | 备份并发线程数| 4 |
